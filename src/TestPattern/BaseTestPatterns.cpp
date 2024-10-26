@@ -1,5 +1,10 @@
 #include "MySort/TestPattern/BaseTestPattern.hpp"
+#include "MySort/TestPattern/DataConfig.hpp"
 #include <algorithm>
+
+#ifdef __GNUC__
+#include <cxxabi.h>
+#endif
 
 namespace testPatterns
 {
@@ -54,8 +59,21 @@ void generateData()
     std::cout << "===================================================" << std::endl;
     std::cout << "Data Brief Information:\n";
     // @note The type name is not human-readable in gcc.
+
+#ifdef __GNUC__
+    int status;
+    std::unique_ptr<char, void (*)(void*)> realContainerTypeName(
+        abi::__cxa_demangle(typeid(CONTAINER_TYPE).name(), 0, 0, &status), std::free);
+    std::cout << "Container Type: " << (status == 0 ? realContainerTypeName.get() : "unknown")
+              << '\n';
+    std::unique_ptr<char, void (*)(void*)> realElementTypeName(
+        abi::__cxa_demangle(typeid(ELEMENT_TYPE).name(), 0, 0, &status), std::free);
+    std::cout << "Element Type: " << (status == 0 ? realElementTypeName.get() : "unknown") << '\n';
+#else
     std::cout << "Container Type: " << typeid(CONTAINER_TYPE).name() << '\n';
     std::cout << "Element Type: " << typeid(ELEMENT_TYPE).name() << '\n';
+#endif
+
     std::cout << "Element Number: " << NUM_OF_ELEM_TO_GENERATE << '\n';
     yutils::DistributionVisualizer<ELEMENT_TYPE> visualizer;
     visualizer(genData);

@@ -13,7 +13,7 @@ namespace testPatterns
 class BubbleSort : public BaseTestPattern
 {
 public:
-    explicit BubbleSort() : BaseTestPattern("[Bubble Sort]")
+    explicit BubbleSort() : BaseTestPattern("[Bubble Sort] --SLOW")
     {
     }
 
@@ -27,7 +27,7 @@ private:
 class BubbleSort_Stop : public BaseTestPattern
 {
 public:
-    explicit BubbleSort_Stop() : BaseTestPattern("[Bubble Sort Stop in Time]")
+    explicit BubbleSort_Stop() : BaseTestPattern("[Bubble Sort Stop in Time] --SLOW")
     {
     }
 
@@ -41,7 +41,7 @@ private:
 class BubbleSort_NarrowBoundary : public BaseTestPattern
 {
 public:
-    explicit BubbleSort_NarrowBoundary() : BaseTestPattern("[Bubble Sort Narrow Boundary]")
+    explicit BubbleSort_NarrowBoundary() : BaseTestPattern("[Bubble Sort Narrow Boundary] --SLOW")
     {
     }
 
@@ -55,7 +55,7 @@ private:
 class InsertionSort : public BaseTestPattern
 {
 public:
-    explicit InsertionSort() : BaseTestPattern("[Insertion Sort]")
+    explicit InsertionSort() : BaseTestPattern("[Insertion Sort] --SLOW")
     {
     }
 
@@ -69,7 +69,7 @@ private:
 class SelectionSort : public BaseTestPattern
 {
 public:
-    explicit SelectionSort() : BaseTestPattern("[Selection Sort]")
+    explicit SelectionSort() : BaseTestPattern("[Selection Sort] --SLOW")
     {
     }
     virtual void sort_impl()

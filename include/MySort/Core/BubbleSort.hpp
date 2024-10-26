@@ -2,9 +2,6 @@
 #include <algorithm>
 #include <iterator>
 
-// [ToDo] This should be written to a config file
-#include "MySort/Core/PreDefined.hpp"
-
 namespace mysort {
     template<class _It, class... _Prs>
         requires std::forward_iterator<_It>
